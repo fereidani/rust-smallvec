@@ -2075,6 +2075,7 @@ impl<T, const N: usize> Drop for IntoIter<T, N> {
 /// It is recommended to use the macro instead of using thís function.
 #[doc(hidden)]
 #[track_caller]
+#[inline]
 pub fn from_elem<T: Clone, const N: usize>(elem: T, n: usize) -> SmallVec<T, N> {
     if n > SmallVec::<T, N>::inline_size() {
         repeat_n(elem, n).collect()
